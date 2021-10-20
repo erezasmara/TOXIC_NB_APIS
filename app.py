@@ -66,7 +66,7 @@ def predict():
         output = {'msg':message,'result': Predict_Func(message.lower())}
         return output,200
     else:
-        return {"msg": "the api service support only english language string type.",'result':""}, 403
+        return {"error": "the api service support only english language string type."}, 403
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
