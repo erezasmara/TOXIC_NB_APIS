@@ -56,14 +56,16 @@ from sklearn.naive_bayes import MultinomialNB
 
 
 
+
+
 #####################################
 '''this project made by: Erez Asmara '''
 #####################################
 
 ######################################################################
 #Load all the csv files
-train = pd.read_csv('./train.csv')
-test = pd.read_csv('./test.csv')
+train = pd.read_csv('train.csv')
+test = pd.read_csv('test.csv')
 ######################################################################
 
 
@@ -92,25 +94,32 @@ model1.fit(features, d_train.toxic)
 def Predict_Func(string):
  answer=model1.predict(vectorizer.transform([string]))[0]
  if(answer !=1 ):
-  return "OK"
+  return True
  else:
-    return "ERROR"
+    return False
 ######################################################################
 
+def isEnglish(s):
+    _type = type(s) == str
+    if _type:
+     return s.isascii()
+    else:
+     return False
 
-
-## flask server
+## flask server is up on port 5000
 app = Flask(__name__)
 @app.route('/',methods = ["POST"])
 def predict():
     data = request.get_json(force=True)
     message = data["data"]
-    output = {'msg':message,'result': Predict_Func(message.lower())}
-    
-    return output
+
+    if isEnglish(message):
+        output = {'msg':message,'result': Predict_Func(message.lower())}
+        return output,200
+    else:
+        return {"msg": "the api service support only english language string type.",'result':""}, 403
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
-
 
 ```
