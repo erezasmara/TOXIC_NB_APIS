@@ -99,6 +99,7 @@ def Predict_Func(string):
     return False
 ######################################################################
 
+## flask server is up on port 5000
 def isEnglish(s):
     _type = type(s) == str
     if _type:
@@ -106,7 +107,7 @@ def isEnglish(s):
     else:
      return False
 
-## flask server is up on port 5000
+
 app = Flask(__name__)
 @app.route('/',methods = ["POST"])
 def predict():
