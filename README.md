@@ -12,7 +12,8 @@ Toxic_nb_apis
 
 ```
 Description:
-api model that’s capable of detecting if comment is a toxic. base on naive base models
+this api service use machine learning (naive base) to detect if your text is toxic ,
+the server that handle the request done with flask.
 
 Requirement:
 - Python 3.8 or above
