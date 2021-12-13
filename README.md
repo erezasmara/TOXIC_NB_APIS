@@ -32,11 +32,10 @@ Installation with pip
 
 
 
-start:
+Start:\
 python3 app.py
 
-test
-CURL
+testing with CURL
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"data":"HELLO"}' http://localhost:5000
 ```
